@@ -1,5 +1,12 @@
+import { argv } from 'process';
+
 const parseArgs = () => {
-    // Write your code here 
+    const args = argv.join(' ')
+        .split(' --')
+        .splice(1)
+        .map((arg) => arg.split(' ').join(' is '))
+        .join(', ');
+    console.log(args);
 };
 
 parseArgs();

@@ -1,4 +1,4 @@
-import { readdir, copyFile } from 'fs/promises';
+import { readdir } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 

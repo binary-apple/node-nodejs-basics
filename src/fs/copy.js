@@ -1,4 +1,4 @@
-import { readdir, copyFile, mkdir } from 'fs/promises';
+import { readdir, copyFile, mkdir, stat } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,6 +9,7 @@ const copy = async () => {
     const dirFrom = path.resolve(__dirname, 'files');
     const dirTo = path.resolve(__dirname, 'files_copy');
     try {
+        await stat(dirFrom);
         await mkdir(dirTo);
         const filesToCopy = await readdir(dirFrom, { withFileTypes: true});
         for (const file of filesToCopy) {

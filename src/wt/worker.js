@@ -6,9 +6,10 @@ const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2
 const sendResult = () => {
     // This function sends result of nthFibonacci computations to main thread
     try {
-        parentPort.postMessage(nthFibonacci(workerData.n));
+        const result = nthFibonacci(workerData.n);
+        parentPort.postMessage({status: 'resolved', data: result});
     } catch (err) {
-        console.err(err.message);
+        parentPort.postMessage({status: 'error', data: null});
     }
 
 };
